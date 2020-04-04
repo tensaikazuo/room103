@@ -1,6 +1,7 @@
 import React from 'react'
 import { Root, Routes, addPrefetchExcludes } from 'react-static'
 import { Link, Router } from 'components/Router'
+import { Helmet } from 'react-helmet'
 
 import { theme } from 'theme'
 import Header from 'components/Header'
@@ -12,8 +13,13 @@ import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
   },
+  content: {
+    flexGrow: 1,
+  }
 }));
 
 function App() {
@@ -23,11 +29,16 @@ function App() {
   return (
     <Root>
       <>
+      <Helmet
+        titleTemplate="Room 103 | %s "
+        defaultTitle="Room 103"
+      >
+      </Helmet>
       <CssBaseline />
-      <div className={classes.root}>
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <div className={classes.root}>
           <Header />
-          <div className="content">
+          <div className={classes.content}>
             <React.Suspense fallback={<em>Loading...</em>}>
               <Router>
                 <Routes path="*" />
@@ -35,8 +46,8 @@ function App() {
             </React.Suspense>
           </div>
           <Footer />
-        </ThemeProvider>
-      </div>
+        </div>
+      </ThemeProvider>
       </>
     </Root>
   )

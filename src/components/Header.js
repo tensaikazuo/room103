@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, } from 'components/Router'
+import { Link } from 'components/Router'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -18,6 +18,21 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  homeLink: {
+    textDecoration: 'none',
+    color: 'white',
+  },
+  menuList: {
+    padding: 0,
+  },
+  menuItemLink: {
+    display: 'block',
+    width: '100%',
+    padding: '0.5em 1em 0.5em 1em',
+    textDecoration: 'none',
+    color: theme.palette.primary[500],
+    fontWeight: 'bold',
+  }
 }));
 
 export default function Header() {
@@ -40,7 +55,7 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Room 103
+            <Link className={classes.homeLink} to="/">Room 103</Link>
           </Typography>
           <Menu
             id="simple-menu"
@@ -49,10 +64,18 @@ export default function Header() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}><Link to="/">Home</Link></MenuItem>
-            <MenuItem onClick={handleClose}><Link to="/profile">Profile</Link></MenuItem>
-            <MenuItem onClick={handleClose}><Link to="/siteinfo">Site Info</Link></MenuItem>
-            <MenuItem onClick={handleClose}><Link to="/log">Log</Link></MenuItem>
+            <MenuItem className={classes.menuList} onClick={handleClose}>
+              <Link className={classes.menuItemLink} to="/">Home</Link>
+            </MenuItem>
+            <MenuItem className={classes.menuList} onClick={handleClose}>
+              <Link className={classes.menuItemLink} to="/profile">Profile</Link>
+            </MenuItem>
+            <MenuItem className={classes.menuList} onClick={handleClose}>
+              <Link className={classes.menuItemLink} to="/siteinfo">Site Info</Link>
+            </MenuItem>
+            <MenuItem className={classes.menuList} onClick={handleClose}>
+              <Link className={classes.menuItemLink} to="/log">Log</Link>
+            </MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
