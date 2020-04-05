@@ -2,5 +2,6 @@
 /tmp/
 /artifacts/
 /dist/
+/backup/
 package-lock.json
 yarn.lock

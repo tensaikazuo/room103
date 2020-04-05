@@ -8,8 +8,11 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 
 import './app.css'
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import { Container } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +22,12 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-  }
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
 }));
 
 function App() {
@@ -39,11 +47,13 @@ function App() {
         <div className={classes.root}>
           <Header />
           <div className={classes.content}>
+            <Container maxwidth="xs">
             <React.Suspense fallback={<em>Loading...</em>}>
               <Router>
                 <Routes path="*" />
               </Router>
             </React.Suspense>
+            </Container>
           </div>
           <Footer />
         </div>

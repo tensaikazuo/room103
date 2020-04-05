@@ -1,18 +1,20 @@
 import path from 'path'
 import axios from 'axios'
+import { fetchCollection } from './src/cockpit/fetch'
 
 export default {
   getRoutes: async () => {
-    const { data: posts } = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts'
-    )
+    const { entries: posts } = await fetchCollection()
+
+    console.log(posts)
 
     return [
       {
-        path: '/blog',
+        path: '/log',
         getData: () => ({
           posts,
         }),
+        /*
         children: posts.map(post => ({
           path: `/post/${post.id}`,
           template: 'src/containers/Post',
@@ -20,6 +22,7 @@ export default {
             post,
           }),
         })),
+        */
       },
     ]
   },
