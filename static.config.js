@@ -35,6 +35,6 @@ export default {
     ],
     require.resolve('react-static-plugin-reach-router'),
     require.resolve('react-static-plugin-sitemap'),
-    ['change-build-path'],
+    // ['change-build-path'],
   ],
 }
