@@ -1,9 +1,11 @@
 import axios from "axios";
 
+const myToken = process.env.npm_config_cockpit_api_key
+
 export async function fetchCollection() {
   return axios
     .post(
-      'http://localhost:8080/api/collections/get/Log?token=fe71c0c6f9aa01736ac432513d5136',
+      `http://mycockpit:80/api/collections/get/Log?token=${myToken}`,
       {
         filter: {
           Date: true,
