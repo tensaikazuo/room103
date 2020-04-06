@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -12,12 +12,11 @@ const useStyles = makeStyles((theme) => ({
       '0px -1px 10px 0px rgba(0,0,0,0.12)',
     ],
     padding: '0.1em 0 0.1em 0',
-    marginTop: theme.spacing(2),
   },
-}));
+}))
 
-const now   = new Date();
-const year  = now.getFullYear();
+const now   = new Date()
+const year  = now.getFullYear()
 
 export default function Footer() {
 

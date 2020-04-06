@@ -6,7 +6,6 @@ import ReactMarkdown from 'react-markdown'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
-import lime from '@material-ui/core/colors/lime';
 
 const useStyles = makeStyles((theme) => ({
   paperSection: {
@@ -14,8 +13,11 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    //textAlign: 'center',
-    //backgroundColor: lime[50],
+    '& a': {
+      textDecoration: 'none',
+      color: theme.palette.primary[500],
+      fontWeight: 'bold',
+    },
   },
 }));
 

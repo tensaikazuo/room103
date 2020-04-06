@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 
 const myToken = process.env.npm_config_cockpit_api_key
 
@@ -11,8 +11,6 @@ export async function fetchCollection() {
           Date: true,
         },
         sort: {_created:-1},
-        // populate: 1,
-        // simple: 1,
       }
     )
     .then(collection => collection.data)
