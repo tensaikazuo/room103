@@ -24,6 +24,40 @@ const useStyles = makeStyles((theme) => ({
 export default function Log() {
 
   const { posts } = useRouteData()
+  const { imgInfo } = useRouteData()
+
+  const imgPair = {}
+
+  const makeImgPair = () => {
+    posts.map(post => {
+      if (post.Picture) {
+        imgInfo.map(eachInfo => {
+          const imgFullPath = eachInfo.url
+          const hasStorage = imgFullPath.indexOf('/storage')
+          if (hasStorage !== -1) {
+            const imgPathMod = imgFullPath.substring(hasStorage)
+            if (post.Picture.path === imgPathMod) {
+              const imgAbsPath = eachInfo.filename
+              const hasImages = imgAbsPath.indexOf('/images')
+              if (hasImages !== -1) {
+                const imgAbsPathMod = imgAbsPath.substring(hasImages)
+                imgPair[post._id] = imgAbsPathMod
+              } else {
+                console.log('The filename of imgInfo is not correct...')
+              }
+            } else {
+              console.log("The path of this post's path is different from one of the paths of imgInfo...")
+            }
+          } else {
+            'The url of imgInfo is not correct...'
+          }
+        })
+      }
+      return imgPair
+    })
+  }
+  makeImgPair()
+  console.log(imgPair)
 
   const classes = useStyles()
 
