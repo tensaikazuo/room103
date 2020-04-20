@@ -45,11 +45,9 @@ export default function Log() {
               } else {
                 console.log('The filename of imgInfo is not correct...')
               }
-            } else {
-              console.log("The path of this post's path is different from one of the paths of imgInfo...")
             }
           } else {
-            'The url of imgInfo is not correct...'
+            console.log('The url of imgInfo is not correct...')
           }
         })
       }
@@ -57,7 +55,15 @@ export default function Log() {
     })
   }
   makeImgPair()
-  console.log(imgPair)
+  // console.log(imgPair)
+
+  const IsImageAvailable = (props) => {
+    if (props.id in imgPair) {
+      return <img src={imgPair[props.id]} width="100%" height="auto" alt={props.meta} />
+    } else {
+      return null
+    }
+  }
 
   const classes = useStyles()
 
@@ -76,6 +82,10 @@ export default function Log() {
               <Paper className={classes.paper}>
                 <h3>{post.Title}</h3>
                 <p>{post.Date}</p>
+                <IsImageAvailable
+                  id={post._id}
+                  meta={(post.Picture && post.Picture.meta) ? post.Picture.meta.title : ''}
+                />
                 <ReactMarkdown source={post.Content} />
               </Paper>
             </Grid>
