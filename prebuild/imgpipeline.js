@@ -1,13 +1,15 @@
+const cleanImg = require('./cleanimg.js')
 const fetchCollection = require('./getimginfo.js')
 const genImgArr = require('./genimgarr.js')
 const getImgFile = require('./getimgfile.js')
 const dumpImgInfo = require('./dumpimginfo.js')
 
-const path = require('path')
-const targetDir = path.join(__dirname, '../public/images');
+const targetDir = 'public/images/'
 
 async function imgPipeline() {
   try {
+    const deleteResult = await cleanImg(targetDir)
+    console.log('deleted: \n', deleteResult)
     const { entries: posts } = await fetchCollection()
     const imgArr = genImgArr(posts)
     const downloadResult = await getImgFile(imgArr, targetDir)

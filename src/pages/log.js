@@ -40,7 +40,8 @@ export default function Log() {
               const imgPathMod = imgFullPath.substring(hasStorage)
               if (current.Picture.path === imgPathMod) {
                 const imgAbsPath = eachInfo.filename
-                const hasImages = imgAbsPath.indexOf('/images')
+                const hasImages = imgAbsPath.indexOf('images')
+                console.log(hasImages)
                 if (hasImages !== -1) {
                   const imgAbsPathMod = imgAbsPath.substring(hasImages)
                   console.log(imgAbsPathMod)
