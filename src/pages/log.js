@@ -26,36 +26,45 @@ export default function Log() {
   const { posts } = useRouteData()
   const { imgInfo } = useRouteData()
 
-  const imgPair = {}
-
   const makeImgPair = () => {
-    posts.map(post => {
-      if (post.Picture) {
-        imgInfo.map(eachInfo => {
-          const imgFullPath = eachInfo.url
-          const hasStorage = imgFullPath.indexOf('/storage')
-          if (hasStorage !== -1) {
-            const imgPathMod = imgFullPath.substring(hasStorage)
-            if (post.Picture.path === imgPathMod) {
-              const imgAbsPath = eachInfo.filename
-              const hasImages = imgAbsPath.indexOf('/images')
-              if (hasImages !== -1) {
-                const imgAbsPathMod = imgAbsPath.substring(hasImages)
-                imgPair[post._id] = imgAbsPathMod
-              } else {
-                console.log('The filename of imgInfo is not correct...')
+    const result = posts
+      .filter(post => {
+        return post.Picture
+      })
+      .reduce((prev, current) => {
+        const result = imgInfo
+          .map(eachInfo => {
+            const imgFullPath = eachInfo.url
+            const hasStorage = imgFullPath.indexOf('/storage')
+            if (hasStorage !== -1) {
+              const imgPathMod = imgFullPath.substring(hasStorage)
+              if (current.Picture.path === imgPathMod) {
+                const imgAbsPath = eachInfo.filename
+                const hasImages = imgAbsPath.indexOf('/images')
+                if (hasImages !== -1) {
+                  const imgAbsPathMod = imgAbsPath.substring(hasImages)
+                  console.log(imgAbsPathMod)
+                  return imgAbsPathMod
+                } else {
+                  console.log('The filename of imgInfo is not correct...')
+                }
               }
+            } else {
+              console.log('The url of imgInfo is not correct...')
             }
-          } else {
-            console.log('The url of imgInfo is not correct...')
-          }
-        })
-      }
-      return imgPair
-    })
+          })
+          .filter(element => {
+            return element
+          })
+        console.log(result)
+        prev[current._id] = result[0]
+        return prev
+      }, {})
+    return result
   }
-  makeImgPair()
-  // console.log(imgPair)
+
+  const imgPair = makeImgPair()
+  console.log(imgPair)
 
   const IsImageAvailable = (props) => {
     if (props.id in imgPair) {
