@@ -12,6 +12,12 @@ pipeline {
     COCKPIT_API_KEY = credentials('cockpit-api-key')
   }
   stages {
+    stage('Prebuild') {
+      steps {
+        echo 'Start prebuild process...'
+        sh 'npm --cockpit_api_key=${COCKPIT_API_KEY} run prebuild'
+      }
+    }
     stage('Build') {
       steps {
         echo 'Bonjour, madame !'

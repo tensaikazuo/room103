@@ -1,4 +1,4 @@
-const serverUrl = 'http://localhost:8080'
+const serverUrl = 'http://mycockpit:80'
 
 module.exports = function genImgArr (obj) {
   const result = obj
