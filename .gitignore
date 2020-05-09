@@ -3,6 +3,8 @@
 /artifacts/
 /dist/
 /backup/
+/public/images/image_*
 package-lock.json
+imginfo.js
 yarn.lock
 .DS_Store

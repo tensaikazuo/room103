@@ -1,11 +1,13 @@
 import path from 'path'
 import axios from 'axios'
 import { fetchCollection } from './src/cockpit/fetch'
+import { imgInfo } from './imginfo'
 
 export default {
   getRoutes: async () => {
     const { entries: posts } = await fetchCollection()
 
+    console.log(imgInfo)
     console.log(posts)
 
     return [
@@ -13,6 +15,7 @@ export default {
         path: '/log',
         getData: () => ({
           posts,
+          imgInfo,
         }),
       },
     ]

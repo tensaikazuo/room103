@@ -12,10 +12,16 @@ pipeline {
     COCKPIT_API_KEY = credentials('cockpit-api-key')
   }
   stages {
+    stage('Prebuild') {
+      steps {
+        echo 'Start prebuild process...'
+        sh 'npm install'
+        sh 'npm --cockpit_api_key=${COCKPIT_API_KEY} run prebuild'
+      }
+    }
     stage('Build') {
       steps {
-        echo 'Bonjour, madame !'
-        sh 'npm install'
+        echo 'Start build process...'
         sh 'node_modules/react-static/bin/react-static --version'
         sh 'npm --cockpit_api_key=${COCKPIT_API_KEY} run build'
       }
