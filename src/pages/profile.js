@@ -29,18 +29,40 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 600,
     marginRight: 'auto',
     marginLeft: 'auto',
+    '& a': {
+      textDecoration: 'none',
+      color: theme.palette.primary[500],
+      fontFamily: [
+        'Roboto',
+        'Helvetica',
+        'Arial',
+        'sans-serif',
+      ],
+      fontWeight: 500,
+      fontSize: '0.8125rem',
+      padding: '4px 5px',
+      minWidth: '64px',
+      borderRadius: '4px',
+      transition: '0.5s',
+      '&:hover': {
+        backgroundColor: theme.palette.primary[50],
+      },
+    },
   },
   media: {
     height: 450,
   },
-  lead: {
-    textAlign: 'center',
+  buttons: {
+    marginTop: '16px',
+  },
+  secondButton: {
+    marginLeft: '8px',
   },
   note: {
     textAlign: 'center',
     fontSize: '14px',
   }
-}));
+}))
 
 export default function Profile() {
 
@@ -54,31 +76,25 @@ export default function Profile() {
       <Grid container spacing={3}>
         <Grid item xs={12} md={6} key="1">
           <Card className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image="/images/kazuo_portrait.jpg"
-                title="Kazuo Araki"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Kazuo Araki
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Hi! I'm Kazuo Araki, a web and infra engineer based in Ashikaga, Japan.
-                  I create and refine web pages using JavaScript. I'm interested in Static Site Generator and Headless CMS.
-                  I am also a creator, specializing in poetry and folk song.
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary" href="https://github.com/tensaikazuo/">
-                GitHub
-              </Button>
-              <Button size="small" color="primary" href="https://kazuoaraki.net/">
-                Blog
-              </Button>
-            </CardActions>
+            <CardMedia
+              className={classes.media}
+              image="/images/kazuo_portrait.jpg"
+              title="Kazuo Araki"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                Kazuo Araki
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Hi! I'm Kazuo Araki, a web and infra engineer based in Ashikaga, Japan.
+                I create and refine web pages using JavaScript. I'm interested in Static Site Generator and Headless CMS.
+                I am also a creator, specializing in poetry and folk song.
+              </Typography>
+              <div className={classes.buttons}>
+                <a href="https://github.com/tensaikazuo/">GITHUB</a>
+                <a href="https://kazuoaraki.net/" className={classes.secondButton}>BLOG</a>
+              </div>
+            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} md={6} key="2">
