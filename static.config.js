@@ -6,8 +6,6 @@ import { imgInfo } from './imginfo'
 export default {
   getRoutes: async () => {
     const { entries: posts } = await fetchCollection()
-
-    console.log(imgInfo)
     console.log(posts)
 
     return [

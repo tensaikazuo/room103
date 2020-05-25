@@ -15,6 +15,7 @@ pipeline {
     stage('Prebuild') {
       steps {
         echo 'Start prebuild process...'
+        sh 'rm public/images/log/dummy.txt'
         sh 'npm install'
         sh 'npm --cockpit_api_key=${COCKPIT_API_KEY} run prebuild'
       }
