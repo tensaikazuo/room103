@@ -31,7 +31,6 @@ export default function Log() {
       .filter(elem => {
         return elem.id === props.id
       })
-    console.log(matchResult)
     if (matchResult.length === 1) {
       const imgPath = matchResult
         .map(elem => {
