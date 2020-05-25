@@ -5,7 +5,7 @@ module.exports = async function dumpImgInfo(rawObj) {
   try {
     const content = 'export const imgInfo = ' + toSource(rawObj)
     await fs.writeFile('imginfo.js', content)
-    return 'Your imginfo.js is updated or created!'
+    console.log('Your imginfo.js is updated or created!')
   } catch (error) {
     console.log('writing error', error)
   }

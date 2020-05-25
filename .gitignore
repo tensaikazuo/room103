@@ -3,7 +3,8 @@
 /artifacts/
 /dist/
 /backup/
-/public/images/image_*
+/public/images/log/*
+!/public/images/log/dummy.txt
 package-lock.json
 imginfo.js
 yarn.lock
