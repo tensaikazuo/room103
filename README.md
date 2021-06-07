@@ -1,7 +1,7 @@
 # Room 103 - Kazuo's Portfolio
 
 This is my portfolio site. I built this site using [React Static](https://github.com/react-static/react-static).
-My site's public URL is [here](http://room103.cf).
+My site's public URL is ~~here~~(closed 6/7/21). 
 
 On Log page, I implemented simple update structure using Cockpit CMS and Jenkins.
 
